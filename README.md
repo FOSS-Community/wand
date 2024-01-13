@@ -1,6 +1,5 @@
 
 # HeaderHive
-<hr>
 <img src="https://badgen.net/badge/status/Under Development/red?icon=lgtm" alt=""></a>
 
 <p align="center">

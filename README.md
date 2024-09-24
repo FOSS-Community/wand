@@ -1,5 +1,6 @@
 
 # Wand
+![Wandlogo](https://reimg.cfd/?url=https://i.ibb.co/mGCVG6S/wand-logo.png&width=320&height=220)
 
 Potter-ify your Linux experience!
 

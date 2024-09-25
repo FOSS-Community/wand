@@ -1,62 +1,77 @@
-#!/usr/bin/env bash
+#!/bin/sh
+# Install script for your Go CLI tool
 
-# From: https://stackoverflow.com/a/53583797/23060
-# From: https://gist.github.com/DimaKoz/06b7475317b12e7ffa724ef0e115a4ec
+# Define the CLI tool name and the GitHub repo where releases are hosted
+CLI_NAME="wand"
+REPO_URL="https://github.com/FOSS-Community/wand"
 
-version=$1
-if [[ -z "$version" ]]; then
-  echo "usage: $0 <version>"
-  exit 1
-fi
-package_name=wand
+# Function to detect the OS and architecture
+detect_os_arch() {
+    OS=$(uname | tr '[:upper:]' '[:lower:]')
+    ARCH=$(uname -m)
 
-#
-# The full list of the platforms is at: https://golang.org/doc/install/source#environment
-platforms=(
-"darwin/amd64"
-"darwin/arm64"
-"linux/amd64"
-"linux/arm"
-"linux/arm64"
-"windows/amd64"
-)
-
-rm -rf release/
-mkdir -p release
-
-for platform in "${platforms[@]}"
-do
-    platform_split=(${platform//\// })
-    os=${platform_split[0]}
-    GOOS=${platform_split[0]}
-    GOARCH=${platform_split[1]}
-
-    if [ $os = "darwin" ]; then
-        os="macOS"
-    fi
-
-    output_name=$package_name'-'$version'-'$os'-'$GOARCH
-    zip_name=$output_name
-    if [ $os = "windows" ]; then
-        output_name+='.exe'
-    fi
-
-    echo "Building release/$output_name..."
-    env GOOS=$GOOS GOARCH=$GOARCH go build \
-      -ldflags "-X github.com/FOSS-Community/wand/commands.Version=$version" \
-      -o release/$output_name
-    if [ $? -ne 0 ]; then
-        echo 'An error has occurred! Aborting the script execution...'
+    # Determine architecture
+    if [ "$ARCH" = "x86_64" ]; then
+        ARCH="amd64"
+    elif [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
+        ARCH="arm64"
+    elif [ "$ARCH" = "arm" ]; then
+        ARCH="arm"
+    else
+        echo "Unsupported architecture: $ARCH"
         exit 1
     fi
 
-    pushd release > /dev/null
-    if [ $os = "windows" ]; then
-        zip $zip_name.zip $output_name
-        rm $output_name
+    # Determine OS
+    if [ "$OS" = "linux" ]; then
+        OS="linux"
+    elif [ "$OS" = "darwin" ]; then
+        OS="macOS"
     else
-        chmod a+x $output_name
-        gzip $output_name
+        echo "Unsupported OS: $OS"
+        exit 1
     fi
-    popd > /dev/null
-done
+
+    echo "$OS-$ARCH"
+}
+
+# Function to download and install the binary
+install_cli() {
+    OS_ARCH=$(detect_os_arch)
+    LATEST_VERSION=$(curl -s "$REPO_URL/releases/latest" | grep -oP 'tag/\Kv[0-9.]+')
+
+    if [ -z "$LATEST_VERSION" ]; then
+        echo "Unable to find the latest release version."
+        exit 1
+    fi
+
+    # Construct the correct download URL based on OS and architecture
+    DOWNLOAD_URL="$REPO_URL/releases/download/$LATEST_VERSION/wand_v${LATEST_VERSION}_${OS_ARCH}.gz"
+    INSTALL_PATH="/usr/local/bin/$CLI_NAME"
+
+    echo "Downloading $CLI_NAME version $LATEST_VERSION for $OS_ARCH..."
+    curl -L "$DOWNLOAD_URL" -o "$CLI_NAME.gz"
+
+    if [ $? -ne 0 ]; then
+        echo "Error downloading the binary."
+        exit 1
+    fi
+
+    echo "Decompressing the binary..."
+    gunzip "$CLI_NAME.gz"
+
+    if [ $? -ne 0 ]; then
+        echo "Error decompressing the binary."
+        exit 1
+    fi
+
+    echo "Making the binary executable..."
+    chmod +x "$CLI_NAME"
+
+    echo "Moving the binary to $INSTALL_PATH..."
+    sudo mv "$CLI_NAME" "$INSTALL_PATH"
+
+    echo "$CLI_NAME has been installed successfully!"
+}
+
+install_cli

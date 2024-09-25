@@ -1,35 +1,38 @@
-name: Release
+name: Build Release Binaries
 
 on:
-  push:
-    tags:
-      - 'v*'
-
-permissions:
-  contents: write
-
+  release:
+    types:
+      - created
 jobs:
-  goreleaser:
+  build:
+    name: Build Release Assets
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Checkout code
+        uses: actions/checkout@v2
+
       - name: Set up Go
-        uses: actions/setup-go@v4
+        uses: actions/setup-go@v1
         with:
-          go-version: '1.20'
-      - name: Run GoReleaser
-        uses: goreleaser/goreleaser-action@v4
+          go-version: 1.20
+
+      - name: Display the version of go that we have installed
+        run: go version
+
+      - name: Display the release tag
+        run: echo ${{ github.event.release.tag_name }}
+
+      - name: Build the Rodeo executables
+        run: ./build-executables.sh ${{ github.event.release.tag_name }}
+
+      - name: List the Rodeo executables
+        run: ls -l ./release
+
+      - name: Upload the Rodeo binaries
+        uses: svenstaro/upload-release-action@v2
         with:
-          distribution: goreleaser
-          version: latest
-          args: release --clean
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      - name: Upload assets
-        uses: actions/upload-artifact@v3
-        with:
-          name: wand
-          path: dist/*
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref }}
+          file: ./release/rodeo-*
+          file_glob: true

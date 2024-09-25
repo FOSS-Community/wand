@@ -32,7 +32,9 @@ detect_os_arch() {
 # Function to download and install the binary
 install_cli() {
     OS_ARCH=$(detect_os_arch)
-    LATEST_VERSION=$(curl -s "$REPO_URL/releases/latest" | grep -oP 'tag/\Kv[0-9.]+')
+    
+    # Fetch the latest version using GitHub API
+    LATEST_VERSION=$(curl -s "https://api.github.com/repos/FOSS-Community/wand/releases/latest" | grep -oP '"tag_name": "\K(.*)(?=")')
 
     if [ -z "$LATEST_VERSION" ]; then
         echo "Unable to find the latest release version."

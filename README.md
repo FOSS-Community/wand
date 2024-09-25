@@ -36,8 +36,6 @@ The spells used in here are:
 * [mobiliarbus](#mobiliarbus)
 * [avada-kedavra](#avada-kedavra)
 * [accio](#accio)
-* [nox](#nox)
-* [reducio](#reducio)
 
 ## <a id="lumos"></a>Lumos
 

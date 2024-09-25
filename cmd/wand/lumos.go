@@ -7,27 +7,35 @@ import (
 )
 
 var lumosLogo string = fmt.Sprintf(`%s
-   __                  
-  / /_ ____ _  ___  ___
- / / // /  ' \/ _ \(_-<
-/_/\_,_/_/_/_/\___/___/
-                       
+⠀⠀⣶⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⣿⣿⣿⣷⣤⡀⠀⠀⠀⠀⣿⣿⣿⣿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢀⣀⣸⣿⣿⣿⣿⣿⣶⣤⣀⠀⠙⠿⣿⣿⣿⣶⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠸⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣀⠈⠻⣿⣿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀
+⠀⠈⠻⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣦⣀⠙⢿⣿⣿⣦⡀⠀⠀⠀⠀⠀
+⠀⠀⢠⣶⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣄⠙⣿⣿⣿⣦⡀⠀⠀⠀
+⠀⠀⠀⠙⠿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⣬⣿⣿⣿⣷⡀⠀⠀
+⠀⠀⠀⠀⠀⢀⣽⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡛⠛⠿⣿⣷⡄⠀
+⠀⠀⠀⠀⠀⠀⠙⠛⠛⠻⠿⠿⠿⠿⢿⣿⡿⠿⣿⣿⣿⣇⠀⠀⠈⠻⣿⣆
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠉⠻⠋⠀⠀⠀⠀⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⣿⣿
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢻⣿⣄⠀⠀⠀⠀⠀⠀⢀⣼⣿⠃
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⢿⣿⣶⣤⣤⣴⣾⣿⠟⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠉⠀⠀⠀⠀
 %s`, Yellow, Reset)
 
-var lumosDescription string = `
-Lumos is the incantation to a charm that can be used to produce a flash of bright white light from the tip of the wand.
+var lumosDescription string = fmt.Sprintf(`%s
+%sLumos is the incantation to a charm that can be used to produce a flash of bright white light from the tip of the wand.%s
+
 This light can be thrown far off of the wand, illuminating the surrounding area for several minutes
 after its initial casting before darkening once more.
 
-Lumos shows the path in wizard world and so does the 'ls' command in linux world, 'ls' does directory listing.
+%sLumos shows the path in the wizarding world, and similarly, the 'ls' command shows the path in the Linux world.%s %s'ls' displays the files and folders in the current working directory.%s
 
-So typing 'lumos' into terminal will display the files and folders in the current working directory.
+Usage : %s$ wand lumos%s
 
-Usage : $ wand lumos
-
-Cheers!
-
-`
+%sCheers!%s
+`, Cyan, Yellow, Reset, Blue, Reset, Green, Reset, Red, Reset, Magenta, Reset)
 
 var lumosCmd = &cobra.Command{
 	Use:  "lumos",

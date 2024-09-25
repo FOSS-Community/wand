@@ -27,7 +27,7 @@ jobs:
         run: chmod +x build-executables.sh
 
       - name: Build the wand executables
-        run: ./build-executables.sh ${{ github.event.release.tag_name }}
+        run: ./build-executables.sh
 
       - name: List the wand executables
         run: ls -l ./release

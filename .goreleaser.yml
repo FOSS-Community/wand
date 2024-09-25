@@ -1,0 +1,15 @@
+project_name: "wand"
+
+before:
+  hooks:
+    - go mod tidy
+    - go mod download
+
+builds:
+  - main: ./main.go
+    binary: wand
+    goos:
+      - linux
+      - darwin
+    goarm:
+      - "7"

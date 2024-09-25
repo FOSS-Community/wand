@@ -34,7 +34,7 @@ install_cli() {
     OS_ARCH=$(detect_os_arch)
     
     # Fetch the latest version using GitHub API
-    LATEST_VERSION=$(curl -s "https://api.github.com/repos/FOSS-Community/wand/releases/latest" | grep -oP '"tag_name": "\K(.*)(?=")')
+    LATEST_VERSION=$(curl -s "https://api.github.com/repos/FOSS-Community/wand/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
 
     if [ -z "$LATEST_VERSION" ]; then
         echo "Unable to find the latest release version."

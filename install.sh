@@ -39,14 +39,22 @@ install_cli() {
         exit 1
     fi
 
-    DOWNLOAD_URL="$REPO_URL/releases/download/$LATEST_VERSION/$CLI_NAME-$OS_ARCH"
+    DOWNLOAD_URL="$REPO_URL/releases/download/$LATEST_VERSION/$CLI_NAME-$LATEST_VERSION-$OS_ARCH.tar.gz"
     INSTALL_PATH="/usr/local/bin/$CLI_NAME"
 
     echo "Downloading $CLI_NAME version $LATEST_VERSION for $OS_ARCH..."
-    curl -L "$DOWNLOAD_URL" -o "$CLI_NAME"
+    curl -L "$DOWNLOAD_URL" -o "$CLI_NAME.tar.gz"
 
     if [ $? -ne 0 ]; then
-        echo "Error downloading the binary."
+        echo "Error downloading the archive."
+        exit 1
+    fi
+
+    echo "Extracting the binary..."
+    tar -xzf "$CLI_NAME.tar.gz"
+
+    if [ $? -ne 0 ]; then
+        echo "Error extracting the archive."
         exit 1
     fi
 
@@ -55,6 +63,9 @@ install_cli() {
 
     echo "Moving the binary to $INSTALL_PATH..."
     sudo mv "$CLI_NAME" "$INSTALL_PATH"
+
+    echo "Cleaning up..."
+    rm "$CLI_NAME.tar.gz"
 
     echo "$CLI_NAME has been installed successfully!"
 }

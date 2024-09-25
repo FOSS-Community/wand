@@ -37,5 +37,5 @@ jobs:
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           tag: ${{ github.ref }}
-          file: ./release/rodeo-*
+          file: ./release/wand-*
           file_glob: true

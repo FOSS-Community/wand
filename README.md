@@ -6,6 +6,8 @@ Potter-ify your Linux experience!
 
 Some basic Linux commands changed into Harry potter Spells!
 
+![Screenshot 2024-09-26 at 3 15 45 AM](https://github.com/user-attachments/assets/5072b662-7029-4a2e-b4e2-2208dba46430)
+
 # How to install
 
 ```sh
@@ -47,9 +49,11 @@ Lumos shows the path in wizard world and so does the 'ls' command in linux world
 
 So typing 'lumos' into terminal will display the files and folders in the current working directory.
 
-Usage : `$ lumos`
+Usage : `$ wand lumos`
 
 **Cheers!**
+
+
 
 ## <a id="geminio"></a>Geminio
 
@@ -57,7 +61,9 @@ The Geminio Curse or Doubling Charm(Geminio) is a spell used to duplicate an obj
 
 It duplicates objects i.e. creates copies of its own and so does the 'cp' command in linux terminal. It copies files/directories in linux terminal.
 
-Usage : `$ geminio /path/to/source /path/to/destination`
+Usage : `$ wand geminio /path/to/source /path/to/destination`
+
+
 
 **Cheers!**
 
@@ -67,7 +73,7 @@ Originating from "Harry Potter and the Chamber of Secrets", Obliviate is a term 
 
 It makes one forgetful of things or memories and so does the 'clear' command in linux terminal. It clears the output screen or 'obliviates' it :P
 
-Usage : `$ obliviate`
+Usage : `$ wand obliviate`
 
 **Cheers!**
 
@@ -77,7 +83,7 @@ Legilemency or legilimens is the act of magically navigating through many layers
 
 It reads what is beneath the flesh of the person in wizard world, and somewhat 'cat' does the same in linux world. It reads the contents hidden beneath the flesh of a file :P
 
-Usage : `$ legilimens filename`
+Usage : `$ wand legilimens filename`
 
 **Cheers!**
 
@@ -87,7 +93,7 @@ Mobiliarbus is the incantation to a charm used to levitate and move plants and t
 
 It moves objects from one place to another, and so does the 'mv' command in linux world. It moves files and directories from one place to another.
 
-Usage : `$ mobiliarbus /path/to/source /path/to/destination`
+Usage : `$ wand mobiliarbus /path/to/source /path/to/destination`
 
 **Cheers!**
 
@@ -97,7 +103,7 @@ The Killing Curse (Avada Kedavra) is a tool of the Dark Arts and one of the thre
 
 It 'deletes' the person or creature from the living world, poof! And so does the 'rm' command in linux world. 'rm' causes painless death of files and folders :P
 
-Usage : `$ avada-kedavra filename`
+Usage : `$ wand avada-kedavra filename`
 
 **Cheers!**
 
@@ -110,7 +116,7 @@ This spell is one of the oldest spells known to wizarding society.
 
 Accio 'gets' the object and so does 'wget' in the linux world.
 
-Usage : `$ accio LINK`
+Usage : `$ wand accio LINK`
 
 **Cheers!**
 

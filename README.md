@@ -9,7 +9,7 @@ Some basic Linux commands changed into Harry potter Spells!
 # How to install
 
 ```sh
-curl -sSL https://fosscu.org/wand/install.sh | sh
+curl -L https://fosscu.org/wand/install.sh | sh
 ```
 
 This will install wand on your computer.

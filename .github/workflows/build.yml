@@ -23,13 +23,13 @@ jobs:
       - name: Display the release tag
         run: echo ${{ github.event.release.tag_name }}
 
-      - name: Build the Rodeo executables
+      - name: Build the wand executables
         run: ./build-executables.sh ${{ github.event.release.tag_name }}
 
-      - name: List the Rodeo executables
+      - name: List the wand executables
         run: ls -l ./release
 
-      - name: Upload the Rodeo binaries
+      - name: Upload the wand binaries
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}

@@ -7,23 +7,34 @@ import (
 )
 
 var obliviateLogo string = fmt.Sprintf(`%s
-     _   _ _     _     _       
- ___| |_| |_|_ _|_|___| |_ ___ 
-| . | . | | | | | | .'|  _| -_|
-|___|___|_|_|\_/|_|__,|_| |___|
-
+⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡴⠶⠚⠛⠛⠛⠛⠓⠶⢦⣤⣀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣠⡴⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠻⢦⣄⠀⠀⠀⠀⠀
+⠀⠀⠀⣠⡾⠋⠀⢀⣀⣀⣀⡀⠀⠀⠀⠀⠀⠀⣶⡍⠙⣷⣦⠀⠙⢷⣄⠀⠀⠀
+⠀⠀⣴⠋⠀⢠⣾⣿⡟⠉⠙⣿⣷⣆⠀⠀⠀⠀⠙⠁⠀⣼⡿⠀⠀⠀⠹⣦⠀⠀
+⠀⣼⠃⠀⢠⣿⣿⣿⠀⠀⠀⢸⣿⣿⣇⠀⠀⠀⠀⠈⠛⣧⣄⠀⠀⠀⠀⠘⣧⠀
+⢰⡏⠀⠀⢸⣿⣿⣿⠀⠀⠀⢸⣿⣿⣿⡀⠀⢠⣶⡆⠀⣸⣿⠇⠀⠀⠀⠀⢹⡆
+⣾⠁⠀⠀⠸⣿⣿⣿⡀⠀⠀⣸⣿⣿⣿⡇⠀⠀⠛⠦⠶⠛⠋⠀⠀⠀⠀⠀⠀⣷
+⣿⠀⠀⠀⠀⠙⢿⣿⣷⣄⣠⢿⣿⣿⣿⡇⠀⠀⠉⠉⢉⣉⠉⠁⠀⠀⠀⠀⠀⣿
+⢿⠀⠀⠀⠀⠀⠀⠈⠉⠉⠀⢸⣿⣿⣿⠁⠀⠀⠀⢠⣿⣿⠀⠀⠀⠀⠀⠀⠀⡿
+⠸⣇⠀⠀⠀⣴⣾⣶⣆⠀⠀⣸⣿⣿⡏⠀⠀⠀⣠⠏⣿⣿⠀⠀⠀⠀⠀⠀⣸⠇
+⠀⢻⡄⠀⠀⢿⣿⡿⠋⠀⢀⣿⣿⠏⠀⠀⠀⢰⣏⣀⣿⣿⣀⠀⠀⠀⠀⢠⡟⠀
+⠀⠀⠻⣆⠀⠈⠙⠛⠶⠞⠛⠋⠁⠀⠀⠀⠀⠈⠉⠉⣿⣿⠉⠀⠀⠀⣰⠟⠀⠀
+⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠉⠀⣠⡾⠋⠀⠀⠀
+⠀⠀⠀⠀⠀⠙⠳⣦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⠞⠋⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠉⠛⠳⠶⢤⣤⣤⣤⣤⡤⠶⠞⠛⠉⠀⠀⠀⠀⠀⠀⠀⠀
 %s`, Yellow, Reset)
 
-var obliviateDescription string = `
-Originating from Harry Potter and the Chamber of Secrets, Obliviate is a term meaning 'forget'. Obliviate is a memory charm, resulting in the erasure of the recipients memory. One's memory vanishes as soon as this charm is casted.
+var obliviateDescription string = fmt.Sprintf(`%s
+%sOriginating from Harry Potter and the Chamber of Secrets, Obliviate is a term meaning 'forget'.%s
 
-It makes one forgetful of things or memories and so does the 'clear' command in linux terminal, It clears the output screen or 'obliviates' it :P
+Obliviate is a memory charm, resulting in the erasure of the recipient's memory. One's memory vanishes as soon as this charm is cast.
 
-Usage : $ obliviate
+%sIt makes one forget things or memories, and similarly, the 'clear' command in the Linux terminal 'obliviates' the screen.%s %s'clear' erases the terminal's output.%s
 
-Cheers!
+Usage : %s$ wand obliviate%s
 
-`
+%sCheers!%s
+`, Cyan, Yellow, Reset, Blue, Reset, Green, Reset, Red, Reset, Magenta, Reset)
 
 var obliviateCmd = &cobra.Command{
 	Use:  "obliviate",

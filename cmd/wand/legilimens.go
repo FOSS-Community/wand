@@ -7,23 +7,38 @@ import (
 )
 
 var legilimensLogo string = fmt.Sprintf(`%s 
- _         _ _ _                   
-| |___ ___|_| |_|_____ ___ ___ ___ 
-| | -_| . | | | |     | -_|   |_ -|
-|_|___|_  |_|_|_|_|_|_|___|_|_|___|
-      |___|                        
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣴⣾⣿⣶⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⠙⠛⣠⣍⡻⣿⣿⣿⣿⣿⣿⠇⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⣿⣃⣒⣾⣿⣿⣿⣶⡿⠿⠿⠛⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⡿⠿⠿⢿⣿⣯⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣿⣿⣿⣿⣿⣷⣶⣶⣶⣽⣿⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣾⣿⣿⣟⠿⠿⠯⠽⠗⣶⣹⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⣿⣿⣿⣷⣽⣛⣛⣶⣶⠾⣛⣿⣿⣿⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣿⣿⣿⡿⢽⣛⡛⠋⠉⣀⣼⣿⣿⣟⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⣿⣿⣿⣿⣷⣦⣷⣶⣾⣿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣾⣿⡿⢿⠿⠿⡛⠉⠙⣿⣿⣿⣿⠛⠫⣿⣼⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣿⣿⣶⣶⣶⣶⣿⣿⣿⣿⣷⣮⣭⣉⠉⠉⣛⣻⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⡙⠻⠿⠿⠿⠿⠿⠿⠿⣿⣿⣿⣿⣿⣷⡿⠿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣀⣀⣀⣀⣀⣀⡀⠀⣰⣿⣿⡿⣿⣦⣄⣀⡀⠀⠐⠒⠑⠒⠲⠉⢛⣚⣉⣥⠶⣿⣷⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⢀⣴⣶⠛⠉⠉⠁⢀⡈⠻⣯⡉⠙⣿⣿⣿⣿⣤⣉⠉⠉⠉⢙⠛⠛⠻⠯⠭⠽⣻⠉⢃⣐⣤⠾⣿⣧⣀⣀⣀⣤⣤⣤⣤⣄⣀⠀⠀⠀
+⠈⢿⣿⣧⡄⠀⠀⠀⠈⠓⠬⠿⠆⠳⠌⠙⠛⠿⢿⠛⢶⣶⣤⣤⣤⣤⣴⣶⣛⣉⣤⣤⡴⠶⠟⠻⠯⠽⢿⣿⠟⠛⠛⠛⠿⢿⣿⣦⣄
+⠀⠀⠙⠿⣧⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⢀⠄⠀⠀⠉⠀⠀⠀⠀⠉⠉⠉⣁⡤⣀⡀⠀⠀⠀⢀⡴⠟⠁⡤⣬⣁⡀⠒⢲⣻⡿⠋
+⠀⠀⠀⠀⠈⠙⠻⣶⣠⣀⠀⠀⠀⣠⣤⣶⠞⠯⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠁⠁⠈⢳⡀⠀⠚⠉⠀⠀⠀⢀⣽⣿⣯⡝⠟⠋⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠛⠾⢿⢿⣿⡟⢀⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢻⠆⠀⠀⣠⣤⡤⠶⠛⠋⠉⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠙⠛⠛⠒⠶⠶⠶⠶⣶⣦⣴⣶⠦⠤⠶⠶⠒⠒⠚⠋⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+%s`, Magenta, Reset)
 
-%s`, Yellow, Reset)
+var legilimensDescription string = fmt.Sprintf(`%s
+%sLegilemency or Legilimens is the act of magically navigating through many layers of a person's mind and correctly interpreting one's findings.%s
 
-var legilimensDescription string = `
-Legilemency or legilimens is the act of magically navigating through many layers of a person's mind and correctly interpreting one's findings. Muggles often call this as 'mind-reading'.
+Muggles often call this 'mind-reading'.
 
-It reads what is beneath the flesh of the person in wizard world, and somewhat 'cat' does the same in linux world. It reads the contents hidden beneath the flesh of a file :P
+%sIt reads what is beneath the flesh of the person in the wizarding world, and similarly 'cat' does the same in the Linux world.%s %s'cat' reads the contents hidden beneath the flesh of a file. :P%s
 
-Usage : $ legilimens filename
+Usage : %s$ wand legilimens filename%s
 
-Cheers!
-`
+%sCheers!%s
+`, Cyan, Magenta, Reset, Yellow, Reset, Green, Reset, Red, Reset, Magenta, Reset)
 
 var legilimensCmd = &cobra.Command{
 	Use:  "legilimens",

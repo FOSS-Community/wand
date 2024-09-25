@@ -7,29 +7,42 @@ import (
 )
 
 var mobiliarbusLogo string = fmt.Sprintf(`%s
-           _   _ _ _         _ 
- _____ ___| |_|_| |_|___ ___| |_ _ _ ___ 
-|     | . | . | | | | .'|  _| . | | |_ -|
-|_|_|_|___|___|_|_|_|__,|_| |___|___|___|
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣰⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⢿⡿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣼⠃⢸⡇⠙⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⢀⣼⠃⠀⢸⡇⠀⠘⣧⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⢀⡾⣁⣤⡴⢾⡷⢦⣤⡘⣷⡀⠀⠀⠀⠀⠀⠀⠀⢀⣴⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⢀⣾⡿⠋⠀⠀⢸⡇⠀⠀⠙⢿⣷⡀⠀⠀⠀⠀⠀⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⢠⣿⡿⠀⠀⠀⠀⢸⡇⠀⠀⠀⠈⢿⣿⡄⠀⠀⠀⠀⠀⢸⣿⡇⢀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⣶⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣴⣿⣦⡀
+⠀⠀⠀⠀⢠⡟⢹⡇⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⢸⡏⢿⡄⠀⠀⠀⠀⢸⣿⡇⠈⣿⣿⠀⠀⣠⠀⠈⣿⣿⠃⠻⡏⠀⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⠀⣾⣿⡀⠀⣿⣷
+⠀⠀⠀⣠⡟⠀⢸⣇⠀⠀⠀⠀⢸⡇⠀⠀⠀⠀⣸⠇⠀⢻⣆⠀⠀⠀⢸⣿⡇⠀⣿⣿⠀⢸⣿⠀⠀⣿⣿⠀⢀⣤⠆⣿⣿⠀⢠⣤⣤⠀⠀⢰⣶⠆⠘⢿⣿⣄⠁⠀
+⠀⠀⣰⠟⠀⠀⠀⢻⣄⠀⠀⠀⢸⡇⠀⠀⠀⣠⡟⠀⠀⠀⢻⣆⠀⠀⢸⣿⡇⠀⣿⣿⠀⢸⣿⠀⠀⣿⣿⠀⣿⣿⠀⣿⣿⠀⠈⢿⣿⠀⢠⣿⠏⠀⣀⡀⠻⣿⣷⡀
+⠀⣰⠏⠀⠀⠀⠀⠀⠙⠷⣤⣀⣸⣇⣀⣤⠾⠋⠀⠀⠀⠀⠀⠹⣆⠀⢸⣿⡇⠀⣿⣿⣀⣾⣿⣀⣠⡿⠃⠀⢹⣿⣧⣿⣿⠦⠀⠸⣿⣷⣿⠏⠀⠀⣿⣷⡀⣹⣿⠟
+⠼⠿⠶⠶⠶⠶⠶⠶⠶⠶⠶⠿⠿⠿⠿⠶⠶⠶⠶⠶⠶⠶⠶⠶⠿⠆⢸⣿⡇⠀⠈⠻⠟⠁⠈⠻⠋⠀⠀⠀⠀⠛⠉⠛⠉⠀⠀⠀⣿⣿⠏⠀⠀⠀⠈⢻⡿⠟⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠻⢇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣴⡶⠒⠀⠀⠀⣼⣿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠙⠻⠿⢿⣷⣾⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+%s`, Green, Reset)
 
-%s`, Yellow, Reset)
+var mobiliarbusDescription string = fmt.Sprintf(`%s
+%sMobiliarbus is the incantation to a charm used to levitate and move plants and trees, as well as materials made of wood.%s
 
-var mobiliarbusDescription string = `
-Mobiliarbus is the incantation to a charm used to levitate and move plants and trees, as well as the materials made of wood. The Latin term mobilis, meaning "movable" , and arbor means "tree".
+The Latin term 'mobilis', meaning "movable," and 'arbor', meaning "tree."
 
-It moves objects from one place to another, and so does the 'mv' command in linux world. It moves files and directories from one place to another.
+%sIt moves objects from one place to another, and so does the 'mv' command in the Linux world.%s %s'mv' moves files and directories from one location to another.%s
 
-Usage : $ mobiliarbus /path/to/source /path/to/destination
+Usage : %s$ wand mobiliarbus /path/to/source /path/to/destination%s
 
-Cheers!
-`
+%sCheers!%s
+`, Cyan, Green, Reset, Yellow, Reset, Blue, Reset, Red, Reset, Magenta, Reset)
 
 var mobiliarbusCmd = &cobra.Command{
 	Use:  "mobiliarbus",
 	Long: fmt.Sprintf("%s %s", mobiliarbusLogo, mobiliarbusDescription),
 	Args: cobra.ExactArgs(2),
 	Run: func(cmd *cobra.Command, args []string) {
-		wand.Runcommand("mv", args...)
+		source := args[0]
+		destination := args[1]
+		wand.Runcommand("mv", source, destination)
 	},
 }
 

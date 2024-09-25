@@ -7,24 +7,36 @@ import (
 )
 
 var accioLogo string = fmt.Sprintf(`%s   
-             _     
- ___ ___ ___|_|___ 
-| .'|  _|  _| | . |
-|__,|___|___|_|___|
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⡴⠶⠶⠶⠶⠶⠶⠶⣤⣄⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣠⠞⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠙⠻⢦⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡾⠋⠀⠀⠀⠐⢦⣄⣀⣀⣤⣴⠞⠀⠀⠀⠀⠀⠙⢷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⢀⣀⣤⣤⠶⠶⠟⠁⠘⠛⠛⠛⠛⠶⣤⣀⣀⣤⡶⠟⠛⠉⡙⠛⠂⠀⠀⠛⠛⠉⢉⡛⠛⠳⠶⣤⣄⡀⠀⠀⠀⠀⠀
+⠀⢀⣠⠾⠛⣉⣤⣤⣄⠀⠀⠀⣤⠾⣿⡛⠷⣄⠀⠀⠀⠀⠀⣠⡶⢻⡛⠷⣄⠀⠀⠀⠀⣴⠟⠋⠙⠛⠳⢦⣌⡛⢶⣄⠀⠀⠀
+⢠⡞⢁⣴⠟⠉⠁⠀⢿⣄⠀⢸⡏⢰⡟⢻⡆⢹⡆⠀⠀⠀⠀⡟⢰⡟⠛⣧⢹⡇⠀⠀⢀⡏⠀⠀⠀⠀⠀⠀⠈⠻⠆⠙⢷⡄⠀
+⡿⠀⢾⠁⠀⠀⠀⠀⠈⠋⠀⠈⢷⣌⡛⠛⣡⡾⠀⠀⠀⠀⠈⢿⣌⠻⠟⣋⣼⠃⠀⠀⣸⠇⠀⠀⠀⠀⠀⣠⡾⠛⠳⠶⣦⣿⣆
+⠛⠛⠳⠶⠶⣤⣄⡀⠀⠀⠀⠀⠀⠉⢙⡋⣉⣀⡀⠀⠀⠀⠀⠀⠉⠛⠛⠋⠁⠀⠀⢠⡟⠀⠀⠀⠀⢀⡼⠋⠀⠀⠀⠀⠀⠈⠁
+⠀⠀⠀⠀⠀⠀⠈⠻⣦⡀⠀⠀⠀⣤⠞⠓⣿⠉⠁⠀⠀⠀⠛⢻⡆⠶⣤⣄⠀⠀⠀⠀⠀⠀⠀⣀⡴⠟⠁⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠘⠻⢦⣤⡀⠛⠁⠀⠙⢷⡄⠀⠀⣠⠶⠛⠁⠀⠀⠉⣷⠀⢀⣤⠴⠶⠛⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡀⠀⠀⠀⠘⣧⠀⣰⡏⠀⠀⠀⠀⠀⠰⠏⣠⡿⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⢷⡄⠀⣄⠀⠙⠓⠋⠀⠀⠀⠀⡀⠀⠀⣴⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣦⡉⠻⠦⣤⣀⣤⣤⠶⠛⠁⣠⡾⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠻⢦⣄⣀⠀⠀⣀⣠⡴⠞⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+%s`, Cyan, Reset)
 
-%s`, Yellow, Reset)
+var accioDescription string = fmt.Sprintf(`%s
+%sThe Summoning Charm (Accio) was a charm that caused a target at a distance from the caster to levitate or fly over to them.%s
 
-var accioDescription string = `
-The Summoning Charm (Accio) was a charm that caused a target at a distance from the caster to levitate or fly over to them. This spell needs thought behind it, the object must be clear in the caster's mind before trying to summon.
+This spell needs thought behind it; the object must be clear in the caster's mind before trying to summon.
 
-This spell is one of the oldest spells known to wizarding society.
+%sThis spell is one of the oldest spells known to wizarding society.%s
 
-Accio 'gets' the object and so does 'wget' in the linux world.
+%sAccio 'gets' the object and so does 'wget' in the Linux world.%s
 
-Usage : $ accio LINK
+Usage : %s$ wand accio LINK%s
 
-Cheers!
-`
+%sCheers!%s
+`, Cyan, Blue, Reset, Yellow, Reset, Green, Reset, Red, Reset, Magenta, Reset)
 
 var accioCmd = &cobra.Command{
 	Use:  "accio",

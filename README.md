@@ -6,23 +6,13 @@ Potter-ify your Linux experience!
 
 Some basic Linux commands changed into Harry potter Spells!
 
-# How to use
+# How to install
 
 ```sh
-git clone https://github.com/fOSS-Community/wand
-
-go mod tidy
-
-go build -o bin
-
-cd bin 
-
-chmod +x wand
-
-mv wand /usr/bin/
+curl -sSL https://fosscu.org/wand/install.sh | sh
 ```
 
-This will install wand globally on your pc.
+This will install wand on your computer.
 
 ### wand
 
@@ -126,8 +116,20 @@ Usage : `$ accio LINK`
 
 **Cheers!**
 
+# To develop locally via source
+```shell
+git clone https://github.com/fOSS-Community/wand
 
-## <a id="nox"></a>Nox
+go get .
+
+go build -o bin
+
+cd bin 
+
+chmod +x wand
+
+mv wand /usr/bin/
+```
 
 
 # License

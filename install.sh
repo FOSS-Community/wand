@@ -1,63 +1,40 @@
 #!/bin/sh
-# Install script for your Go CLI tool
+set -e
 
-# Define the CLI tool name, GitHub repo, and manual version number
-CLI_NAME="wand"
-REPO_URL="https://github.com/FOSS-Community/wand"
-MANUAL_VERSION="v0.1.0"  # Replace this with the actual latest version
+# Determine OS and architecture
+OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+ARCH=$(uname -m)
 
-# Function to detect the OS and architecture
-detect_os_arch() {
-    OS=$(uname | tr '[:upper:]' '[:lower:]')
-    ARCH=$(uname -m)
-    # Check for supported architectures
-    if [ "$ARCH" = "x86_64" ]; then
+case $ARCH in
+    x86_64)
         ARCH="amd64"
-    elif [ "$ARCH" = "arm64" ] || [ "$ARCH" = "aarch64" ]; then
+        ;;
+    aarch64)
         ARCH="arm64"
-    else
-        echo "Unsupported architecture: $ARCH"
-        exit 1
-    fi
-    # Check for supported operating systems
-    if [ "$OS" != "linux" ] && [ "$OS" != "darwin" ]; then
-        echo "Unsupported OS: $OS"
-        exit 1
-    fi
-    echo "$OS-$ARCH"
-}
+        ;;
+    i386|i686)
+        ARCH="386"
+        ;;
+esac
 
-# Function to download and install the binary
-install_cli() {
-    OS_ARCH=$(detect_os_arch)
-    
-    DOWNLOAD_URL="$REPO_URL/releases/download/$MANUAL_VERSION/$CLI_NAME-$MANUAL_VERSION-$OS_ARCH.tar.gz"
-    INSTALL_PATH="/usr/local/bin/$CLI_NAME"
+# Set version
+VERSION="0.0.1"
 
-    echo "Downloading $CLI_NAME version $MANUAL_VERSION for $OS_ARCH..."
-    curl -L "$DOWNLOAD_URL" -o "$CLI_NAME.tar.gz"
-    if [ $? -ne 0 ]; then
-        echo "Error downloading the archive."
-        exit 1
-    fi
+# Construct download URL
+DOWNLOAD_URL="https://github.com/FOSS-Community/wand/releases/download/v0.0.1/wand_${VERSION}_${OS}_${ARCH}.tar.gz"
 
-    echo "Extracting the binary..."
-    tar -xzf "$CLI_NAME.tar.gz"
-    if [ $? -ne 0 ]; then
-        echo "Error extracting the archive."
-        exit 1
-    fi
+# Create temporary directory
+TMP_DIR=$(mktemp -d)
+trap 'rm -rf "$TMP_DIR"' EXIT
 
-    echo "Making the binary executable..."
-    chmod +x "$CLI_NAME"
+# Download and extract
+echo "Downloading Wand ${VERSION} for ${OS} ${ARCH}..."
+curl -L "$DOWNLOAD_URL" | tar -xz -C "$TMP_DIR"
 
-    echo "Moving the binary to $INSTALL_PATH..."
-    sudo mv "$CLI_NAME" "$INSTALL_PATH"
+# Install
+INSTALL_DIR="/usr/local/bin"
+echo "Installing Wand to $INSTALL_DIR..."
+sudo mv "$TMP_DIR/wand" "$INSTALL_DIR/"
 
-    echo "Cleaning up..."
-    rm "$CLI_NAME.tar.gz"
-
-    echo "$CLI_NAME has been installed successfully!"
-}
-
-install_cli
+echo "Wand ${VERSION} has been installed successfully!"
+echo "You can now use the 'wand' command."

@@ -1,41 +1,36 @@
-name: Build Release Binaries
+name: build
 
 on:
-  release:
-    types:
-      - created
+  push:
+    tags:
+      - "*"
+
+permissions:
+  contents: write
+
 jobs:
   build:
-    name: Build Release Assets
+    name: GoReleaser build
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Go
-        uses: actions/setup-go@v1
+      - name: Check out code into the Go module directory
+        uses: actions/checkout@v3
         with:
-          go-version: 1.20
-
-      - name: Display the version of go that we have installed
-        run: go version
-
-      - name: Display the release tag
-        run: echo ${{ github.event.release.tag_name }}
-
-      - name: Update Permission
-        run: chmod +x build-executables.sh
-
-      - name: Build the wand executables
-        run: ./build-executables.sh ${{ github.event.release.tag_name }}
-
-      - name: List the wand executables
-        run: ls -l ./release
-
-      - name: Upload the wand binaries
-        uses: svenstaro/upload-release-action@v2
+          fetch-depth: 0
+      - name: Set up Go 1.20
+        uses: actions/setup-go@v3
         with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          tag: ${{ github.ref }}
-          file: ./release/wand*
-          file_glob: true
+          go-version: "1.20"
+        id: go
+      - name: Run GoReleaser
+        uses: goreleaser/goreleaser-action@v4
+        with:
+          version: latest
+          args: release --rm-dist
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload assets
+        uses: actions/upload-artifact@v3
+        with:
+          name: gruyere
+          path: dist/*

@@ -1,15 +1,15 @@
 #!/bin/sh
 # Install script for your Go CLI tool
 
-# Define the CLI tool name and the GitHub repo where releases are hosted
+# Define the CLI tool name, GitHub repo, and manual version number
 CLI_NAME="wand"
 REPO_URL="https://github.com/FOSS-Community/wand"
+MANUAL_VERSION="v0.1.0"  # Replace this with the actual latest version
 
 # Function to detect the OS and architecture
 detect_os_arch() {
     OS=$(uname | tr '[:upper:]' '[:lower:]')
     ARCH=$(uname -m)
-
     # Check for supported architectures
     if [ "$ARCH" = "x86_64" ]; then
         ARCH="amd64"
@@ -19,13 +19,11 @@ detect_os_arch() {
         echo "Unsupported architecture: $ARCH"
         exit 1
     fi
-
     # Check for supported operating systems
     if [ "$OS" != "linux" ] && [ "$OS" != "darwin" ]; then
         echo "Unsupported OS: $OS"
         exit 1
     fi
-
     echo "$OS-$ARCH"
 }
 
@@ -33,20 +31,11 @@ detect_os_arch() {
 install_cli() {
     OS_ARCH=$(detect_os_arch)
     
-    # Fetch the latest version using GitHub API
-    LATEST_VERSION=$(curl -s "https://api.github.com/repos/FOSS-Community/wand/releases/latest" | grep '"tag_name":' | sed -E 's/.*"([^"]+)".*/\1/')
-
-    if [ -z "$LATEST_VERSION" ]; then
-        echo "Unable to find the latest release version."
-        exit 1
-    fi
-
-    DOWNLOAD_URL="$REPO_URL/releases/download/$LATEST_VERSION/$CLI_NAME-$LATEST_VERSION-$OS_ARCH.tar.gz"
+    DOWNLOAD_URL="$REPO_URL/releases/download/$MANUAL_VERSION/$CLI_NAME-$MANUAL_VERSION-$OS_ARCH.tar.gz"
     INSTALL_PATH="/usr/local/bin/$CLI_NAME"
 
-    echo "Downloading $CLI_NAME version $LATEST_VERSION for $OS_ARCH..."
+    echo "Downloading $CLI_NAME version $MANUAL_VERSION for $OS_ARCH..."
     curl -L "$DOWNLOAD_URL" -o "$CLI_NAME.tar.gz"
-
     if [ $? -ne 0 ]; then
         echo "Error downloading the archive."
         exit 1
@@ -54,7 +43,6 @@ install_cli() {
 
     echo "Extracting the binary..."
     tar -xzf "$CLI_NAME.tar.gz"
-
     if [ $? -ne 0 ]; then
         echo "Error extracting the archive."
         exit 1

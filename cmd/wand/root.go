@@ -2,8 +2,9 @@ package wand
 
 import (
 	"fmt"
-	"github.com/spf13/cobra"
 	"os"
+
+	"github.com/spf13/cobra"
 )
 
 type Color string
@@ -30,6 +31,7 @@ var commandlist = []string{
 	fmt.Sprintf("\t%s5.\tmobiliarbus%s\n", Magenta, Reset),
 	fmt.Sprintf("\t%s6.\tavada-kedavra%s\n", Cyan, Reset),
 	fmt.Sprintf("\t%s7.\taccio%s\n", Red, Reset),
+	fmt.Sprintf("\t%s8.\tnox%s\n", White, Reset),
 }
 
 var logowand string = `

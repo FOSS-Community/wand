@@ -67,7 +67,7 @@ var rootCmd = &cobra.Command{
 
 func Execute() {
 	if err := rootCmd.Execute(); err != nil {
-		fmt.Fprintf(os.Stderr, "%s Whoos. Some error occurs '%s'\n %s", Red, err, Reset)
+		fmt.Fprintf(os.Stderr, "%s Whoops. Some error occurs '%s'\n %s", Red, err, Reset)
 		os.Exit(1)
 	}
 }

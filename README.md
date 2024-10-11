@@ -1,8 +1,8 @@
-
 # Wand
+
 ![Wandlogo](https://reimg.cfd/?url=https://i.ibb.co/mGCVG6S/wand-logo.png&width=320&height=220)
 
-<hr>
+```markdown
 ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢰⣾⣿⠻⢿⣆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⢀⣀⡀⠀⠐⣾⡟⠀⠀⠀⠀⠀⠀⠀⢀⡀⠀⠀⢀⣠⣀⡀⠀⠀⠀⠀⠀⠀⠀⣿⣿⠀⢸⣿⡇⠀⠀⠀⠀⠀⠀⣠⣶⠀⠀⠀⡄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⣿⡇⠀⠀⣿⡇⠀⢀⣠⣴⡀⠀⠐⢻⡗⣿⡀⢨⣿⢹⣧⠀⠀⠀⠀⠀⠀⠀⢿⣿⠀⢸⣿⡇⠀⠀⠀⡀⠀⠚⢿⣿⠒⢀⣾⣇⡀⠀⢀⣀⠀⠀⠀⣠⣠⡀
@@ -15,44 +15,47 @@
 ⠀⠀⠚⠛⠃⠀⢠⣿⣧⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 ⠀⠀⠀⠀⠀⠀⠉⠀⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 
+```
+
 Potter-ify your Linux experience!
 
 Some basic Linux commands changed into Harry potter Spells!
 
 ![Screenshot 2024-09-26 at 3 15 45 AM](https://github.com/user-attachments/assets/5072b662-7029-4a2e-b4e2-2208dba46430)
 
-# How to install
+## How to install
 
-```sh
+```shell
 curl -L https://fosscu.org/wand/install.sh | sh
 ```
 
 This will install wand on your computer.
 
-### wand
+## wand
 
-```sh
-$ wand
+```shell
+wand
 ```
 
 To get info about any spell, type, for eg- lumos:
 
-```sh
-$ wand lumos --help
+```shell
+wand lumos --help
 ```
 
-# Spells Explained
+## Spells Explained
 
 The spells used in here are:
-* [lumos](#lumos)
-* [obliviate](#obliviate)
-* [geminio](#geminio)
-* [legilimens](#legilimens)
-* [mobiliarbus](#mobiliarbus)
-* [avada-kedavra](#avada-kedavra)
-* [accio](#accio)
 
-## <a id="lumos"></a>Lumos
+- [lumos](#lumos)
+- [obliviate](#obliviate)
+- [geminio](#geminio)
+- [legilimens](#legilimens)
+- [mobiliarbus](#mobiliarbus)
+- [avada-kedavra](#avada-kedavra)
+- [accio](#accio)
+
+## Lumos
 
 Lumos is the incantation to a charm that can be used to produce a flash of bright white light from the tip of the wand.
 This light can be thrown far off of the wand, illuminating the surrounding area for several minutes
@@ -66,9 +69,7 @@ Usage : `$ wand lumos`
 
 **Cheers!**
 
-
-
-## <a id="geminio"></a>Geminio
+## Geminio
 
 The Geminio Curse or Doubling Charm(Geminio) is a spell used to duplicate an object. It can also be used to bewitch an object into multiplying repeatedly when touched, though how one would produce the latter effect is still unknown.
 
@@ -76,11 +77,9 @@ It duplicates objects i.e. creates copies of its own and so does the 'cp' comman
 
 Usage : `$ wand geminio /path/to/source /path/to/destination`
 
-
-
 **Cheers!**
 
-## <a id="obliviate"></a>Obliviate
+## Obliviate
 
 Originating from "Harry Potter and the Chamber of Secrets", Obliviate is a term meaning 'forget'. Obliviate is a memory charm, resulting in the erasure of the recipient's memory. One's memory vanishes as soon as this charm is casted.
 
@@ -90,7 +89,7 @@ Usage : `$ wand obliviate`
 
 **Cheers!**
 
-## <a id="legilimens"></a>Legilimens
+## Legilimens
 
 Legilemency or legilimens is the act of magically navigating through many layers of a person's mind and correctly interpreting one's findings. Muggles often call this as 'mind-reading'.
 
@@ -100,7 +99,7 @@ Usage : `$ wand legilimens filename`
 
 **Cheers!**
 
-## <a id="mobiliarbus"></a>Mobiliarbus
+## Mobiliarbus
 
 Mobiliarbus is the incantation to a charm used to levitate and move plants and trees, as well as the materials made of wood. The Latin term mobilis, meaning "movable" , and arbor means "tree".
 
@@ -110,7 +109,7 @@ Usage : `$ wand mobiliarbus /path/to/source /path/to/destination`
 
 **Cheers!**
 
-## <a id="avada-kedavra"></a>Avada-Kedavra
+## Avada-Kedavra
 
 The Killing Curse (Avada Kedavra) is a tool of the Dark Arts and one of the three Unforgivable Curses. It is one of the most powerful and sinister spells known to wizardkind. When cast successfully on a living person or creature the curse causes instantaneous and painless death, without any signs of violence on body.
 
@@ -120,8 +119,7 @@ Usage : `$ wand avada-kedavra filename`
 
 **Cheers!**
 
-
-## <a id="accio"></a>Accio
+## Accio
 
 The Summoning Charm (Accio) was a charm that caused a target at a distance from the caster to levitate or fly over to them. This spell needs thought behind it, the object must be clear in the caster's mind before trying to summon.
 
@@ -133,25 +131,26 @@ Usage : `$ wand accio LINK`
 
 **Cheers!**
 
-# To develop locally via source
-```shell
+## To develop locally via source
+
+``` shell
 git clone https://github.com/fOSS-Community/wand
 
 go get .
 
 go build -o bin
 
-cd bin 
+cd bin
 
 chmod +x wand
 
 mv wand /usr/bin/
 ```
 
+## License
 
-# License
 This Package is licensed under MIT License.
 
-# Author
-[Kanishk Pachauri](https://github.com/Mr-Sunglasses)
+## Author
 
+[Kanishk Pachauri](https://github.com/Mr-Sunglasses)

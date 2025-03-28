@@ -21,7 +21,7 @@ const (
 	White   Color = "\033[97m"
 )
 
-var version = "0.0.1"
+var version = "0.0.2"
 
 var commandlist = []string{
 	fmt.Sprintf("\t%s1.\tlumos%s\n", Grey, Reset),

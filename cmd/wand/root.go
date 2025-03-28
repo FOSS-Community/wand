@@ -34,6 +34,12 @@ var commandlist = []string{
 	fmt.Sprintf("\t%s8.\tnox%s\n", White, Reset),
 	fmt.Sprintf("\t%s9.\treducio%s\n", Red, Reset),
 	fmt.Sprintf("\t%s10.\texpelliarmus%s\n", Red, Reset),
+	fmt.Sprintf("\t%s11.\talohomora%s\n", Yellow, Reset),
+	fmt.Sprintf("\t%s12.\tsilencio%s\n", Blue, Reset),
+	fmt.Sprintf("\t%s13.\texpecto-patronum%s\n", White, Reset),
+	fmt.Sprintf("\t%s14.\tobscuro%s\n", Magenta, Reset),
+	fmt.Sprintf("\t%s15.\triddikulus%s\n", Cyan, Reset),
+	fmt.Sprintf("\t%s16.\treparo%s\n", Green, Reset),
 }
 
 var logowand string = `

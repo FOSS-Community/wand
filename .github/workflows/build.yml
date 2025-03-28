@@ -1,13 +1,9 @@
 name: build
-
 on:
-  push:
-    tags:
-      - "*"
-
+  release:
+    types: [created]
 permissions:
   contents: write
-
 jobs:
   goreleaser:
     runs-on: ubuntu-latest

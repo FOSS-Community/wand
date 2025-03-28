@@ -5,6 +5,8 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/FOSS-Community/wand/pkg/wand"
+
 	"github.com/spf13/cobra"
 )
 

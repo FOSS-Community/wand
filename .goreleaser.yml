@@ -1,35 +1,15 @@
-version: 2
 project_name: "wand"
+
 before:
   hooks:
     - go mod tidy
     - go mod download
+
 builds:
   - main: ./main.go
     binary: wand
     goos:
       - linux
       - darwin
-    goarch:
-      - amd64
-      - arm64
-      - "386"
     goarm:
       - "7"
-archives:
-  - format: tar.gz
-    name_template: >-
-      {{ .ProjectName }}_
-      {{- .Os }}_
-      {{- if eq .Arch "amd64" }}x86_64
-      {{- else if eq .Arch "386" }}i386
-      {{- else }}{{ .Arch }}{{ end }}
-      {{- if .Arm }}v{{ .Arm }}{{ end }}
-checksum:
-  name_template: 'checksums.txt'
-changelog:
-  sort: asc
-  filters:
-    exclude:
-      - '^docs:'
-      - '^test:'

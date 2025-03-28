@@ -3,6 +3,7 @@ package wand
 import (
 	"fmt"
 	"os/exec"
+	"runtime"
 
 	"github.com/spf13/cobra"
 )
@@ -40,14 +41,26 @@ var silencioCmd = &cobra.Command{
 		var err error
 
 		if unmute {
-			fmt.Println("Unmuting the system sound...")
-			err = exec.Command("amixer", "set", "Master", "unmute").Run()
+			if runtime.GOOS == "darwin" {
+				fmt.Println("Unmuting the system sound...")
+				err = exec.Command("osascript", "-e", "set volume without output muted").Run()
+			} else {
+				fmt.Println("Unmuting the system sound...")
+				err = exec.Command("amixer", "set", "Master", "unmute").Run()
+			}
 		} else {
-			fmt.Println("Muting the system sound...")
-			err = exec.Command("amixer", "set", "Master", "mute").Run()
+			if runtime.GOOS == "darwin" {
+				fmt.Println("Unmuting the system sound...")
+				err = exec.Command("osascript", "-e", "set volume with output muted").Run()
+			} else {
+				fmt.Println("Muting the system sound...")
+				err = exec.Command("amixer", "set", "Master", "mute").Run()
+			}
+
 		}
 
 		if err != nil {
+			fmt.Println("You need to install amixer to use this spell")
 			fmt.Println("Error adjusting system sound:", err)
 		} else {
 			if unmute {

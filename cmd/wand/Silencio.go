@@ -50,7 +50,7 @@ var silencioCmd = &cobra.Command{
 			}
 		} else {
 			if runtime.GOOS == "darwin" {
-				fmt.Println("Unmuting the system sound...")
+				fmt.Println("Muting the system sound...")
 				err = exec.Command("osascript", "-e", "set volume with output muted").Run()
 			} else {
 				fmt.Println("Muting the system sound...")
